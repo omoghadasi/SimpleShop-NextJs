@@ -1,27 +1,36 @@
 import Link from "next/link";
 import fetch from 'node-fetch'
+import NavbarCustom from "../../components/navbar";
+import {Container,Row,Col} from "reactstrap";
 
 function Products({products}) {
     console.log(products)
     return (
         <>
-            <h2>this is products page</h2>
-            <ul>
-                <li><Link href="/"><a>Home</a></Link></li>
-            </ul>
+            <NavbarCustom/>
+            <Container>
+                <Row>
+                    <Col xs="3">
+                        <h4>this is sidebar</h4>
+                    </Col>
+                    <Col xs="9">
+                        <h2>this is products page</h2>
+                        <ul>
+                            {
+                                products.map(item=>{
+                                    return(
+                                        <li key={item.id}>
+                                            <div><span>{item.title}</span></div>
+                                        </li>
+                                    )
+                                })
+                            }
 
-            <ul>
-                {
-                    products.map(item=>{
-                        return(
-                            <li key={item.id}>
-                                <div><span>{item.title}</span></div>
-                            </li>
-                        )
-                    })
-                }
+                        </ul>
+                    </Col>
+                </Row>
+            </Container>
 
-            </ul>
         </>
 
     )

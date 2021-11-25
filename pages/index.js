@@ -1,20 +1,31 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Link from "next/link";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Container, Row, Col, Button} from "reactstrap";
+import NavbarCustom from "../components/navbar";
 
 export default function Home() {
-  return (
-      <>
-        <h2>hello world</h2>
-        <h3>im omid moghadasi</h3>
-        <h4>im junior developer</h4>
-        <p>this is my first app by next.js</p>
-          <hr/>
-          <ul>
-              <li><Link href="/products"><a>Products</a></Link></li>
-          </ul>
-      </>
+    return (
+        <>
+            <NavbarCustom/>
+            <Container>
+                <Row>
+                    <Col className='text-center p-5'>
+                        <h2>Hello World! 👋</h2>
+                        <br/>
+                        <h3>im omid moghadasi</h3>
+                        <h4>this is my first app by next.js</h4>
+                    </Col>
+                </Row>
 
-  )
+                <Row>
+                    <Col className='d-flex justify-content-center align-items-center'>
+                        <Button color="primary" outline>
+                            <Link href="/products"><a className='links'>Products</a></Link>
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
+        </>
+
+    )
 }
