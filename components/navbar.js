@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 
 const NavbarCustom = props => {
+    const {categories}=props;
     return (
         <divs>
             <Navbar
@@ -43,19 +44,17 @@ const NavbarCustom = props => {
                                 caret
                                 nav
                             >
-                                Options
+                                Categories
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem>
-                                    Option 1
-                                </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
-                                </DropdownItem>
-                                <DropdownItem divider/>
-                                <DropdownItem>
-                                    Reset
-                                </DropdownItem>
+                                {
+                                    categories.map((cat,index)=>
+                                        <DropdownItem key={index}>
+                                            <Link href='/products/category/[title]' as={`/products/category/${cat}`}><a>{cat}</a></Link>
+                                        </DropdownItem>
+                                    )
+                                }
+
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>

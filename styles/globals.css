@@ -20,6 +20,9 @@ button:hover .links{
   color: inherit;
 }
 
+p{
+    text-align: justify;
+}
 * {
   box-sizing: border-box;
 }
@@ -43,4 +46,14 @@ button:hover .links{
 }
 .product-card .card-body button{
     font-size: 12px;
+}
+.product-card .card-body button>a{
+    color: inherit;
+}
+.single-product-img{
+    max-width: 200px;
+    max-height: 200px;
+}
+button>a{
+    color: inherit;
 }

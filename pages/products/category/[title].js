@@ -1,18 +1,17 @@
-import Link from "next/link";
-import fetch from 'node-fetch'
-import NavbarCustom from "../../components/navbar";
-import {Container,Row,Col} from "reactstrap";
-import ProductCard from "../../components/ProductCard";
 
-function Products({products,categories}) {
-    console.log(products)
+import fetch from 'node-fetch'
+import NavbarCustom from "../../../components/navbar";
+import {Container,Row,Col} from "reactstrap";
+import ProductCard from "../../../components/ProductCard";
+
+function CategoryProducts({products,categories,title}) {
     return (
         <>
             <NavbarCustom categories={categories}/>
             <Container className='mt-5'>
                 <Row>
                     <Col>
-                        <h4>Products</h4>
+                        <h4>{title} Products</h4>
                         <Col className='d-flex flex-wrap'>
                             {
                                 products.map(item=>{
@@ -32,14 +31,15 @@ function Products({products,categories}) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({params}) {
     let resCategories = await fetch('https://fakestoreapi.com/products/categories')
     let categories =await resCategories.json()
-    let res = await fetch('https://fakestoreapi.com/products')
+    let res = await fetch(`https://fakestoreapi.com/products/category/${params.title}`)
     let products =await res.json()
+    let title=params.title
     return {
-        props: {products,categories}
+        props: {products,categories,title}
     }
 }
 
-export default Products
+export default CategoryProducts;
