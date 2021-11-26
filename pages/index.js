@@ -1,12 +1,11 @@
 import Link from "next/link";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Row, Col, Button} from "reactstrap";
 import NavbarCustom from "../components/navbar";
 
-export default function Home() {
+function Home({categories}) {
     return (
         <>
-            <NavbarCustom/>
+            <NavbarCustom categories={categories}/>
             <Container>
                 <Row>
                     <Col className='text-center p-5'>
@@ -29,3 +28,13 @@ export default function Home() {
 
     )
 }
+
+export async function getServerSideProps() {
+    let resCategories = await fetch('https://fakestoreapi.com/products/categories')
+    let categories =await resCategories.json()
+    return {
+        props: {categories}
+    }
+}
+
+export default Home;
