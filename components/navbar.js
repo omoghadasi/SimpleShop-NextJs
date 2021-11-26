@@ -18,7 +18,6 @@ const NavbarCustom = props => {
                 color="dark"
                 dark
                 expand="md"
-                full
             >
                 <NavbarBrand href="/">
                     Simple Shop
@@ -46,7 +45,7 @@ const NavbarCustom = props => {
                             >
                                 Options
                             </DropdownToggle>
-                            <DropdownMenu right>
+                            <DropdownMenu end>
                                 <DropdownItem>
                                     Option 1
                                 </DropdownItem>

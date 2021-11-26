@@ -2,35 +2,31 @@ import Link from "next/link";
 import fetch from 'node-fetch'
 import NavbarCustom from "../../components/navbar";
 import {Container,Row,Col} from "reactstrap";
+import ProductCard from "../../components/ProductCard";
 
 function Products({products}) {
     console.log(products)
     return (
         <>
             <NavbarCustom/>
-            <Container>
+            <Container className='mt-5'>
                 <Row>
-                    <Col xs="3">
-                        <h4>this is sidebar</h4>
-                    </Col>
-                    <Col xs="9">
-                        <h2>this is products page</h2>
-                        <ul>
+                    <Col>
+                        <h4>Products</h4>
+                        <Col className='d-flex flex-wrap'>
                             {
                                 products.map(item=>{
                                     return(
-                                        <li key={item.id}>
-                                            <div><span>{item.title}</span></div>
-                                        </li>
+                                        <Col md='3' key={item.id} className='p-3'>
+                                            <ProductCard item={item}/>
+                                        </Col>
                                     )
                                 })
                             }
-
-                        </ul>
+                        </Col>
                     </Col>
                 </Row>
             </Container>
-
         </>
 
     )

@@ -23,3 +23,24 @@ button:hover .links{
 * {
   box-sizing: border-box;
 }
+.product-card{
+  align-items: center;
+}
+.product-card img{
+   height: 200px;
+   width: 80%;
+ }
+
+.product-card .card-body h5{
+  font-size: 15px;
+}
+.product-card .card-body h6{
+    font-size: 11px;
+}
+.product-card .card-body p{
+    font-size: 13px;
+    text-align: justify;
+}
+.product-card .card-body button{
+    font-size: 12px;
+}
